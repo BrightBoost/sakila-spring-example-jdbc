@@ -21,14 +21,20 @@ public class ActorController {
         return actorService.getActors();
     }
 
-    @GetMapping("first/{firstName}")
-    public List<Actor> getActorsByFirstName(@PathVariable String firstName) {
-        return actorService.getActorsByFirstName(firstName);
+    @GetMapping("{id}")
+    public Actor getById(@PathVariable int id) {
+        return actorService.getActorById(id);
     }
 
-    @GetMapping("last/{lastName}")
-    public List<Actor> getActorsByLastName(@PathVariable String lastName) {
+//    GET /actors/search/by-lastname?lastName=CRU
+    @GetMapping("search/by-lastname")
+    public List<Actor> getActorByLastName(@RequestParam(required = false) String lastName) {
         return actorService.getActorsByLastName(lastName);
+    }
+
+    @GetMapping("search/by-firstname")
+    public List<Actor> getActorByFirstName(@RequestParam(required = false) String firstName) {
+        return actorService.getActorsByFirstName(firstName);
     }
 
     @PostMapping
