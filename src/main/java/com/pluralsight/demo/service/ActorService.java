@@ -19,11 +19,34 @@ public class ActorService {
         return actorDao.getAllActors();
     }
 
+    public Actor getActorById(int id) {
+        return actorDao.getActorById(id);
+    }
+
     public List<Actor> getActorsByFirstName(String firstName) {
         return actorDao.getActorsByFirstName(firstName);
     }
 
     public List<Actor> getActorsByLastName(String lastName) {
         return actorDao.getActorsByLastName(lastName);
+    }
+
+    public Actor addNewActor(Actor actor) {
+        return actorDao.addNewActor(actor);
+    }
+
+    public void updateActor(int id, Actor actor) {
+        Actor actorToUpdate = getActorById(id);
+        if(actor.getFirstName() != null) {
+            actorToUpdate.setFirstName(actor.getFirstName());
+        }
+        if(actor.getLastName() != null) {
+            actorToUpdate.setLastName(actor.getLastName());
+        }
+        actorDao.updateExistingActor(id, actorToUpdate);
+    }
+
+    public void deleteActor(int id) {
+        actorDao.deleteActor(id);
     }
 }

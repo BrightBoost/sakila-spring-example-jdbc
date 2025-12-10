@@ -1,11 +1,9 @@
 package com.pluralsight.demo.controller;
 
+import com.pluralsight.demo.dao.ActorDao;
 import com.pluralsight.demo.model.Actor;
 import com.pluralsight.demo.service.ActorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +31,18 @@ public class ActorController {
         return actorService.getActorsByLastName(lastName);
     }
 
+    @PostMapping
+    public Actor addNewActor(@RequestBody Actor actor) {
+        return actorService.addNewActor(actor);
+    }
 
+    @PutMapping("{id}")
+    public void updateActor(@PathVariable int id, @RequestBody Actor actor) {
+        actorService.updateActor(id, actor);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteActor(@PathVariable int id) {
+        actorService.deleteActor(id);
+    }
 }
