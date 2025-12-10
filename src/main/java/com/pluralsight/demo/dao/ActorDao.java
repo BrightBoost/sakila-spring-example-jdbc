@@ -7,5 +7,5 @@ import java.util.List;
 public interface ActorDao {
     List<Actor> getAllActors();
     List<Actor> getActorsByFirstName(String firstName);
-    List<Actor> getActorsByLastName(String firstName);
+    List<Actor> getActorsByLastName(String lastName);
 }
